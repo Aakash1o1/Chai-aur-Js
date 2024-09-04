@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM4</title>
+</head>
+<body style="background-color: #212121;color: white;">
+  <ul class="language" >
+    <li>JavaScript</li>
+  </ul>
+</body>
+<script>
+  /* Make a function to add new list item */
+  // How -->
+    	//1. Make a list item
+      //2. Add given data to list item
+      //3. Add list item to end of list
+  function addLanguage(langName){
+     let tempLi = document.createElement('li');//This makes a new element
+     tempLi.innerHTML=`${langName}`;//Add the giventext to element
+     document.querySelector('.language').appendChild(tempLi);//select the first element that has class 'language' and add the given elemetn as child
+  }
+  addLanguage("python");
+  addLanguage("hello");
+  // This approach has a problem.
+  
+
+  // Optimized approach
+  function optElement(listEle){
+    let tempLi = document.createElement('li');
+    tempLi.appendChild(document.createTextNode(listEle));
+    document.querySelector('.language').appendChild(tempLi);
+  }
+  
+  // How is second approach better
+  // 1. innerHTML treates the added elements as HTML code and thus parses it and tries to compile it. Once it sees no HTML tag it treates it as TEXT.
+  // On other hand, createTextNode treates the input as text from start, saving the processing time
+  
+  // Edit(replace)
+  function edit(n,newElem){
+    let store = document.querySelector(`li:nth-child(${n})`);//Select element
+    let tempElem = document.createElement('li');//Make element to replace it with
+    tempElem.textContent = `${newElem}`;
+    store.replaceWith(tempElem);//Replace 
+  }
+  edit(2,`atm4`);
+
+  // Remove
+  function rem(num){
+    document.querySelector(`li:nth-child(${num})`).remove();
+  }
+  addLanguage("tempTry");
+  addLanguage("tempTry");
+  rem(4);
+
+</script>
+</html>

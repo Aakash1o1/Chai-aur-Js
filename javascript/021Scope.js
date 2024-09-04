@@ -1,0 +1,1 @@
+// The global scope inis different in console of browser and in code enviroment
